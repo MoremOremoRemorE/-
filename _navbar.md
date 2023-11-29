@@ -1,6 +1,7 @@
-- **学习导航**
-  - [**哔哩哔哩**](https://www.bilibili.com/)
-  - [**GitHub中文社区**)](https://www.githubs.cn/post/what-is-github)
-- **镜像仓库**
-  - [**Docker官方镜像中心**](https://hub.docker.com/)
-  - [**Maven官方镜像仓库**](https://mvnrepository.com/)
+- **技术人生**
+  - [**Java这行**](java/java.md)
+  - [**试试别的语言**](other/other.md)
+- **随便聊聊**
+  - [**程序员35以后怎么办**](talk/35.md)
+  - [**随笔**](talk/suibi.md)
+
