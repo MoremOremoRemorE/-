@@ -1,1 +1,72 @@
-## 待完善
+## 面试中被问到的问题
+
+> 五年经验的好像不怎么问Java基础了，大部分问的都是框架和中间件及项目上的问题
+## kafka
+
+1. 你项目中用到kakfa都是用来做什么的
+   > 用来同步数据（解释一下项目中用到kafka的逻辑就行）
+   
+2. kafka是怎么保证消息不丢失的
+   > * 对于生产者来说：kafka在发送消息的时候默认是异步发送，可以改成同步发送（不推荐），推荐的做法是使用回调函数，在发送消息后通过回调函数来判断是否成功，在进行后续操作，发送不成功的话，可以设置Producer的retries次数，一般推荐3次
+   > * 对于消费者来说，最简单的暴力的方法就是关闭自动提交offset，改为手动提交 
+   
+3. kafka为什么快
+   > 1. Page页缓存（和os系统相关）
+   > 2. 磁盘顺序写
+   > 3. 使用零拷贝技术
+   > 4. 使用分区分段+索引存放数据
+   
+4. kafka如何保证消息顺序
+   > Topic中的Partition中消息是有序的(原理)
+   > 1. 一个topic只有一个Partition（不推荐）
+   > 2. 发送消息指定Key/Partition
+
+------
+
+## MVC
+
+1. 怎么理解面向对象
+    > 应该是问面对象的三个特性（封装、继承、多态）
+-------
+2. SpringMvc的整体流程
+    > 1. 客户端发送一个http请求给前端控制器（DispatcherServlet）；
+    > 2. 前端控制器（DispacherServlet）根据请求信息调用处理器映射器（HandlerMapping）；
+    > 3. 处理器映射器（HandlerMapping）根据url找到具体的处理器（Handler），生成处理器对象以及对应的处理器拦截器（HandlerInterceptor有则生成）最后以HandlerExecutionChain对象的形式返回给前端控制器（DispacherServlet）；
+    > 4. 前端控制器（DispacherServlet）根据返回信息找到对应的处理器适配器（HandlerAdapter）；
+    > 5. 处理器适配器（HandlerAdapter）会调用并执行（处理器）Handler，这里的处理器指的是程序中编写的Controller类，也称后端控制器；
+    > 6. 处理器Handler（Controller）执行完后，返回ModelAndView对象（Model 是返回的数据对象，View 是个逻辑上的视图）给前端控制器（DispacherServlet）；
+    > 7. 前端控制器（DispacherServlet）根据返回信息找到ViewReslover将逻辑视图解析为具体的视图（view），并进行渲染成完整的视图（view）返回给客户端。
+-------
+
+## 设计模式
+1. 你都知道哪些设计模式
+    > 1. 工厂
+    > 2. 抽象工厂
+    > 3. 代理模式
+    > 4. 装饰器模式
+    > 5. 策略模式
+    会让你大致解释一下
+2. 代理模式和装饰器模式有哪些异同点
+    > 1. 装饰器模式只是拓展对象的功能,代理模式是对对象的控制
+    > 2. 装饰器模式通常定义一些抽象装饰类和具体装饰类,抽象装饰类定义增加功能的接口,具体装饰类去实现,代理模式是新建一个代理类来管理原对象
+------
+
+## 设计原则
+
+   1. 你都知道哪些设计原则 
+
+      > - 单一职责原则（Single Responsibility Principle，简称 SRP）：一个类应该仅有一个引起它变化的原因。
+      > - 开放封闭原则（Open-Closed Principle，简称 OCP）：软件实体（类、模块、函数等）应该是可以扩展的，但是不可修改。
+      > - 里氏替换原则（Liskov Substitution Principle，简称 LSP）：子类型必须能够替换它们的基类型。
+      > - 接口隔离原则（Interface Segregation Principle，简称 ISP）：客户端不应该依赖它不需要的接口。
+      > - 依赖倒转原则（Dependence Inversion Principle，简称 DIP）：高层模块不应该依赖于低层模块，两者都应该依赖于抽象。
+      > - 合成复用原则（Composite Reuse Principle，简称 CRP）
+      > - 迪维恩原则（Demeter Principle，也称为最少知识原则）
+
+> 会让你详细解释
+
+------
+
+## RocketMq
+
+    1.  分布式事务
